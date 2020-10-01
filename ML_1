@@ -1,0 +1,13 @@
+import tensorflow as tf
+import numpy as np
+from tensorflow import keras
+model = keras.models.Sequential()
+model.add(keras.layers.Dense(32, activation='relu', input_shape=[1]))
+model.add(keras.layers.Dense(1))
+def loss_func(actual, prediction):
+    return np.square(np.subtract(actual,prediction)).mean()
+model.compile(loss=loss_func, optimizer='adam')
+x=[1,2,3,4,5,6,7,8,9,10]
+y=[2,4,9,16,25,36,49,64,81,100]
+model.fit(x,y,batch_size=10,epochs=10)
+print(model.predict())
