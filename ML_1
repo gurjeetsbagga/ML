@@ -12,9 +12,6 @@ model.add(keras.layers.Dense(32, activation='relu'))
 
 model.add(keras.layers.Dense(1))
 
-def loss_func(actual, prediction):
-    return np.square(np.subtract(actual,prediction)).mean()
-
 model.compile(optimizer="Adam", loss="mse", metrics=["mae"])
 x=[1,2,3,4,5,6,7,8,9,10]
 y=[1,4,9,16,25,36,49,64,81,100]
